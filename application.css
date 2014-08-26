@@ -1,0 +1,26 @@
+h1 {
+	font-style: Comic Sans MS;
+	font-size: 20px;
+	text-align: center;
+	color: blue;
+}
+
+#style-form {
+	width: 350px;
+	height: 140px;
+	border: 2px solid red;
+	border-radius: 5px;
+	box-shadow: 0 0 5px red;
+	margin: 0 auto;
+	background-color: blue;
+	font-family: Comic Sans MS;
+	color: white;
+}
+
+.error {
+	color: red;
+}
+
+.non_error {
+	color: black;
+}

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Awesome Board</title>
+	</head>
+
+	<body>
+		<link rel="stylesheet" type="text/css" href="application.css">
+		<script type="text/javascript" src="application.js"></script>
+
+		<h1>Awesome Table!</h1>
+		<div id="style-form">
+		<form id="tableForm">
+			<table>
+				<tr>
+					<td>Name</td>
+					<td><input type="text" id="name"></td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td><input type="text" id="email"></td>
+				</tr>
+				<tr>
+					<td>Message</td>
+					<td><textarea id="message"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input onclick="validate(this.form);" type="button" value="Start"></td>
+				</tr>
+			</table>
+		</form>
+		</div>
+		<div id="root">
+			
+		</div>
+	</body>
+</html>
