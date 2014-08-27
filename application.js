@@ -10,7 +10,8 @@ function validate() {
 	var loginElem = document.getElementById("login");
 	var messageElem = document.getElementById("message");
 
-	var progressObj = {
+	// verify form element
+	var verifyFormElement = {
 		name: {
 			correct: 0
 		},
@@ -38,7 +39,7 @@ function validate() {
 			showError(nameElem, "Enter Right Name");
 		} else {
 			showCorrect(nameElem);
-			progressObj.name.correct = 1;
+			verifyFormElement.name.correct = 1;
 		}
 	})();
 
@@ -49,7 +50,7 @@ function validate() {
 			showError(loginElem, "Enter Right Login");
 		} else {
 			showCorrect(loginElem);
-			progressObj.login.correct = 1;
+			verifyFormElement.login.correct = 1;
 		}
 	})();
 
@@ -59,7 +60,7 @@ function validate() {
 			showError(messageElem, "Enter Right Message");
 		} else {
 			showCorrect(messageElem);
-			progressObj.message.correct = 1;
+			verifyFormElement.message.correct = 1;
 		}
 	})();
 
@@ -93,7 +94,7 @@ function validate() {
 	}
 
 
-	if ((progressObj.name.correct == 1) && (progressObj.login.correct == 1) && (progressObj.message.correct == 1)) {
+	if ((verifyFormElement.name.correct == 1) && (verifyFormElement.login.correct == 1) && (verifyFormElement.message.correct == 1)) {
 		correctMessage();
 	} else {
 		errorMessage();
