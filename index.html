@@ -10,22 +10,41 @@
 
 		<h1>Awesome Table!</h1>
 		<div id="style-form">
-		<form id="tableForm">
+		<form id="tableForm" name='awesomeform'>
 			<table>
 				<tr>
 					<td>Name</td>
 					<td><input type="text" id="name"></td>
 				</tr>
 				<tr>
-					<td>Email</td>
+					<td>Login</td>
 					<td><input type="text" id="email"></td>
 				</tr>
 				<tr>
 					<td>Message</td>
 					<td><textarea id="message"></textarea></td>
 				</tr>
+
 				<tr>
-					<td colspan="2"><input onclick="validate(this.form);" type="button" value="Start"></td>
+					<td>Category</td>
+					<td>
+						<tr>
+							<td><input type="checkbox" name="Java" value="Java">Java</td>
+							<td><input type="checkbox" name="JavaScript" value="Javacript">JavaScript</td>
+							<tr>
+							<td><input type="checkbox" name="Python" value="Python">Python</td>
+							<td><input type="checkbox" name="PHP" value="PHP">PHP</td>
+							<tr>
+							<td><input type="checkbox" name="Objective-C" value="Objective-C">Objective-C</td>
+							<td><input type="checkbox" name="C#" value="C#">C#</td>
+							<tr>
+							<td><input type="checkbox" name="Ruby" value="Ruby">Ruby</td>
+						</tr>
+					</td>
+				</tr>
+
+				<tr>
+					<td colspan="2"><input onclick="validate();" type="button" value="Start"></td>
 				</tr>
 			</table>
 		</form>
