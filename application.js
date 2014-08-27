@@ -1,96 +1,101 @@
-//Script by Gios
-//Awesome Board
+// Awesome Board
 "use strict";
 
 function validate() {
 	var name = document.forms['awesomeform'].name.value;
-	var email = document.forms['awesomeform'].email.value;
+	var login = document.forms['awesomeform'].login.value;
 	var message = document.forms['awesomeform'].message.value;
 
 	var nameElem = document.getElementById("name");
-	var emailElem = document.getElementById("email");
+	var loginElem = document.getElementById("login");
 	var messageElem = document.getElementById("message");
-	var checkElem = document.getElementsByName('category');
-	console.log(checkElem.checked);
 
-	function error(element, message) {
-		element.className = "error";
+	var progressObj = {
+		name: {
+			correct: 0
+		},
+		login: {
+			correct: 0
+		},
+		message: {
+			correct: 0
+		}
+	};
+
+	function showError(element, message) {
+		element.className = "showError";
 		element.setAttribute("title", message);
 	}
 
-	function non_error(element) {
-		element.className = "non-error";
+	function showCorrect(element) {
+		element.className = "showCorrect";
 		element.setAttribute("title", "Good");
 	}
 
 	// Validate yield name
-	var validate_name = function() {
-		if ((name == "") || !(isNaN(name)) || (name.charAt(0) >= 65 && name.charAt(0) <= 90)) {
-			error(nameElem, "Enter Right Name");
+	(function validateName() {
+		if ((name === "") || !(isNaN(name)) || /^[A-Z]{1}[a-zA-z]{2,}$/.test(name) === false) {
+			showError(nameElem, "Enter Right Name");
 		} else {
-			non_error(nameElem);
+			showCorrect(nameElem);
+			progressObj.name.correct = 1;
 		}
-	}
-	validate_name();
+	})();
 
-	// Validate email
-	var validate_email = function() {
-		if (/^[a-zA-z]{1}[a-zA-Z1-9]{3,20}$/.test(name) === false) {
-			error(emailElem, "Enter Right Login");
+
+	// Validate login
+	(function validateLogin() {
+		if (/^[a-zA-z]{1}[a-zA-Z1-9]{3,20}$/.test(login) === false) {
+			showError(loginElem, "Enter Right Login");
 		} else {
-			non_error(emailElem);
+			showCorrect(loginElem);
+			progressObj.login.correct = 1;
 		}
-	}
-	validate_email();
+	})();
 
 	//Validate message
-	var validate_message = function() {
-		if (message == "") {
-			error(messageElem, "Enter Right Message");
+	(function validateMessage() {
+		if (message === "") {
+			showError(messageElem, "Enter Right Message");
 		} else {
-			non_error(messageElem);
+			showCorrect(messageElem);
+			progressObj.message.correct = 1;
 		}
-	}
-	validate_message();
+	})();
 
-	//Validate message
-	var validate_category = function() {
-		if (checkElem.checked > 5) {
-			alert("CHECK ERROR");
-		} else {
-			alert("NO ERROR");
+	// Validate selectCategory
+	(function validateSelectCategory() {
+		var selectCategoryElem = document.forms['awesomeform'].selectCategory;
+		var countSelected = 0;
+
+		for (var i = 0; i < selectCategoryElem.options.length; i++) {
+			if (selectCategoryElem.options[i].selected)
+				countSelected++;
 		}
-	}
-	validate_category();
+		if (countSelected >= 5) {
+			selectCategoryElem.selected = false;
+			alert("Please choose less then 5 items");
+		}
+	})();
 
-	function board() {
-		var root = document.getElementById("root");
-		root.style.color = "green";
-		root.style.margin = "20px auto";
-		root.style.textAlign = "center";
-		root.style.fontSize = "30px";
-		root.innerHTML = "Correct!";
-	}
-
-	function board_error() {
-		var root = document.getElementById("root");
-		root.style.color = "red";
-		root.style.margin = "20px auto";
-		root.style.textAlign = "center";
-		root.style.fontSize = "30px";
-		root.innerHTML = "Incorrect!";
+	function correctMessage() {
+		var showResultMessage = document.querySelector(".showResultMessage");
+		showResultMessage.className = "showResultMessage";
+		showResultMessage.style.color = "green";
+		showResultMessage.innerHTML = "Correct!";
 	}
 
+	function errorMessage() {
+		var showResultMessage = document.querySelector(".showResultMessage");
+		showResultMessage.className = "showResultMessage";
+		showResultMessage.style.color = "red";
+		showResultMessage.innerHTML = "Incorrect!";
+	}
 
 
-	/*console.log(nameElem.className);
-	console.log(emailElem.className);
-	console.log(messageElem.className);
-	console.log(screen.height);
-	console.log(size.scrollHeight);*/
-	if ((nameElem.className == "non-error") && (emailElem.className == "non-error") && (messageElem.className == "non-error")) {
-		board();
+	if ((progressObj.name.correct == 1) && (progressObj.login.correct == 1) && (progressObj.message.correct == 1)) {
+		correctMessage();
 	} else {
-		board_error();
+		errorMessage();
 	}
 }

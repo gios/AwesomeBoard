@@ -17,10 +17,16 @@ h1 {
 	color: white;
 }
 
-.error {
+.showError {
 	color: red;
 }
 
-.non_error {
+.showCorrect {
 	color: black;
+}
+
+.showResultMessage {
+	margin: 20px auto;
+	text-align: center;
+	font-size: 30px;
 }

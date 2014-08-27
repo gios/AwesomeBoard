@@ -18,7 +18,7 @@
 				</tr>
 				<tr>
 					<td>Login</td>
-					<td><input type="text" id="email"></td>
+					<td><input type="text" id="login"></td>
 				</tr>
 				<tr>
 					<td>Message</td>
@@ -28,18 +28,15 @@
 				<tr>
 					<td>Category</td>
 					<td>
-						<tr>
-							<td><input type="checkbox" name="category" value="Java">Java</td>
-							<td><input type="checkbox" name="category" value="Javacript">JavaScript</td>
-							<tr>
-							<td><input type="checkbox" name="category" value="Python">Python</td>
-							<td><input type="checkbox" name="category" value="PHP">PHP</td>
-							<tr>
-							<td><input type="checkbox" name="category" value="Objective-C">Objective-C</td>
-							<td><input type="checkbox" name="category" value="C#">C#</td>
-							<tr>
-							<td><input type="checkbox" name="category" value="Ruby">Ruby</td>
-						</tr>
+						<select name="selectCategory" multiple>
+							<option value="Java">Java</option>
+							<option value="JavaScript">JavaScript</option>
+							<option value="Python">Python</option>
+							<option value="Ruby">Ruby</option>
+							<option value="C/C++">C/C++</option>
+							<option value="Objective-C">Objective-C</option>
+							<option value="Assembly">Assembly</option>
+						</select>
 					</td>
 				</tr>
 
@@ -49,7 +46,7 @@
 			</table>
 		</form>
 		</div>
-		<div id="root">
+		<div class="showResultMessage">
 			
 		</div>
 	</body>
