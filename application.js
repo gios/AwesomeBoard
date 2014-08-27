@@ -6,11 +6,12 @@ function validate() {
 	var name = document.forms['awesomeform'].name.value;
 	var email = document.forms['awesomeform'].email.value;
 	var message = document.forms['awesomeform'].message.value;
-	console.log();
 
 	var nameElem = document.getElementById("name");
 	var emailElem = document.getElementById("email");
 	var messageElem = document.getElementById("message");
+	var checkElem = document.getElementsByName('category');
+	console.log(checkElem.checked);
 
 	function error(element, message) {
 		element.className = "error";
@@ -35,7 +36,7 @@ function validate() {
 	// Validate email
 	var validate_email = function() {
 		if (/^[a-zA-z]{1}[a-zA-Z1-9]{3,20}$/.test(name) === false) {
-			error(emailElem, "Enter Right Email");
+			error(emailElem, "Enter Right Login");
 		} else {
 			non_error(emailElem);
 		}
@@ -52,6 +53,16 @@ function validate() {
 	}
 	validate_message();
 
+	//Validate message
+	var validate_category = function() {
+		if (checkElem.checked > 5) {
+			alert("CHECK ERROR");
+		} else {
+			alert("NO ERROR");
+		}
+	}
+	validate_category();
+
 	function board() {
 		var root = document.getElementById("root");
 		root.style.color = "green";
@@ -59,6 +70,15 @@ function validate() {
 		root.style.textAlign = "center";
 		root.style.fontSize = "30px";
 		root.innerHTML = "Correct!";
+	}
+
+	function board_error() {
+		var root = document.getElementById("root");
+		root.style.color = "red";
+		root.style.margin = "20px auto";
+		root.style.textAlign = "center";
+		root.style.fontSize = "30px";
+		root.innerHTML = "Incorrect!";
 	}
 
 
@@ -70,5 +90,7 @@ function validate() {
 	console.log(size.scrollHeight);*/
 	if ((nameElem.className == "non-error") && (emailElem.className == "non-error") && (messageElem.className == "non-error")) {
 		board();
+	} else {
+		board_error();
 	}
 }
